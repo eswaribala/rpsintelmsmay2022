@@ -15,9 +15,10 @@ namespace CatalogAPI.Models
         public long CatalogId { get; set; }
         [Column("Catalog_Name")]
         [Required]
-        public string? CatalogName { get; set; }        
-   
-        [JsonIgnore]
+        [StringLength(50)]
+        public string? CatalogName { get; set; }
+
+        [JsonIgnore]       
         public Collection<Product> ProductList { get; set; }
 
 
