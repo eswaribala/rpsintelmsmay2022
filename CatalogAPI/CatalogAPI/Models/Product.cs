@@ -14,7 +14,7 @@ namespace CatalogAPI.Models
 
         [ForeignKey("Catalog")]
         [Column("Catalog_Id_FK")]
-        private long CatalogId { get; set; }
-        private Catalog Catalog { get; set; }
+        public long CatalogId { get; set; }
+        public Catalog Catalog { get; set; }
     }
 }

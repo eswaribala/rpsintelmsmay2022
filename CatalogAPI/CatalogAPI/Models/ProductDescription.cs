@@ -19,6 +19,7 @@ namespace CatalogAPI.Models
         [Column("Unit_Price")]
         public int UnitPrice { get; set; }
         [Column("Product_Type")]
+       
         public ProductType ProductType { get; set; }
 
 
