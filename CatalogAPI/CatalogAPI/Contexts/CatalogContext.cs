@@ -13,12 +13,14 @@ namespace CatalogAPI.Contexts
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Catalog> Catalogs { get; set; }
+        /*
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Catalog>()
-                .HasMany(c => c.ProductList)
+            modelBuilder.Entity<Catalog>()              
+                .HasMany(c => c.ProductList)                
                 .WithOne(c => c.Catalog);
         }
+        */
     }
 }
