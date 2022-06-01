@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 //External Configuration
 ConfigurationManager configuration = builder.Configuration;
-Dictionary<String, Object> data = new VaultConfiguration().GetDBCredentials().Result;
+Dictionary<String, Object> data = new VaultConfiguration(configuration).GetDBCredentials().Result;
 Console.WriteLine(data);
 SqlConnectionStringBuilder providerCs = new SqlConnectionStringBuilder();
 providerCs.InitialCatalog = data["dbname"].ToString();
