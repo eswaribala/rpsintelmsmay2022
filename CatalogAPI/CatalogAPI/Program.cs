@@ -7,6 +7,7 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+//External Configuration
 ConfigurationManager configuration = builder.Configuration;
 Dictionary<String, Object> data = new VaultConfiguration().GetDBCredentials().Result;
 Console.WriteLine(data);
@@ -14,7 +15,7 @@ SqlConnectionStringBuilder providerCs = new SqlConnectionStringBuilder();
 providerCs.InitialCatalog = data["dbname"].ToString();
 providerCs.UserID = data["username"].ToString();
 providerCs.Password = data["password"].ToString();
-providerCs.DataSource = data["servername"].ToString();
+providerCs.DataSource = "DESKTOP-55AGI0I\\MSSQLEXPRESS2021";
 
 //providerCs.UserID = CryptoService2.Decrypt(ConfigurationManager.AppSettings["UserId"]);
 providerCs.MultipleActiveResultSets = true;
