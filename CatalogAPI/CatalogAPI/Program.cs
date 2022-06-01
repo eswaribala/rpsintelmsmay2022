@@ -1,6 +1,9 @@
 using CatalogAPI.Contexts;
 using CatalogAPI.Models;
 using CatalogAPI.Repositories;
+using CatalogAPI.Schemas;
+using GraphQL.Server;
+using GraphQL.Server.Ui.Playground;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Data.SqlClient;
@@ -43,6 +46,12 @@ builder.Services.AddApiVersioning(x =>
     x.ReportApiVersions = true;
     x.ApiVersionReader = new HeaderApiVersionReader("x-api-version");
 });
+
+builder.Services.AddScoped<CatalogSchema>();
+builder.Services.AddGraphQL()
+   .AddSystemTextJson()
+   .AddGraphTypes(typeof(CatalogSchema), ServiceLifetime.Scoped);
+
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
@@ -53,7 +62,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseGraphQL<CatalogSchema>();
+app.UseGraphQLPlayground(options: new PlaygroundOptions());
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
