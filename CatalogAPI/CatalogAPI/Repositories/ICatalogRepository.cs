@@ -6,7 +6,7 @@ namespace CatalogAPI.Repositories
     {
        Task<Catalog> AddCatalog(Catalog Catalog);
         Task<Catalog> UpdateCatalog(Catalog Catalog);
-        Task DeleteCatalog(Catalog Catalog);
+        Task<bool> DeleteCatalog(long CatalogId);
         Task<Catalog> GetCatalogById(long CatalogId);
         Task<IEnumerable<Catalog>> GetAllCatalog();
         
