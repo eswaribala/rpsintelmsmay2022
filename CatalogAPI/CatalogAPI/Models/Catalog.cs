@@ -18,8 +18,8 @@ namespace CatalogAPI.Models
         [StringLength(50)]
         public string? CatalogName { get; set; }
 
-        [JsonIgnore]       
-        public Collection<Product> ProductList { get; set; }
+        //[JsonIgnore]       
+       // public Collection<Product> ProductList { get; set; }
 
 
     }

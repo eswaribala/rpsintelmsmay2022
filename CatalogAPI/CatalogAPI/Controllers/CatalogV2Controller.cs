@@ -1,4 +1,5 @@
-﻿using CatalogAPI.Models;
+﻿/*
+using CatalogAPI.Models;
 using CatalogAPI.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,23 +7,20 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CatalogAPI.Controllers
 {
-    [ApiVersion("1.0")]
-    [ApiVersion("1.1")]
-    [ApiVersion("2.0")]
+    [ApiVersion("2")]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
-    public class CatalogController : ControllerBase
+    public class CatalogV2Controller : ControllerBase
     {
         private ICatalogRepository _CatalogRepository;
 
-        public CatalogController(ICatalogRepository catalogRepository)
+        public CatalogV2Controller(ICatalogRepository catalogRepository)
         {
             _CatalogRepository = catalogRepository; 
         }
 
         // GET: api/<CatalogController>
         [HttpGet]
-        [MapToApiVersion("2.0")]
         public async Task<IEnumerable<Catalog>> Get()
         {
             return await this._CatalogRepository.GetAllCatalog();
@@ -67,3 +65,4 @@ namespace CatalogAPI.Controllers
         }
     }
 }
+*/

@@ -1,5 +1,7 @@
 using CatalogAPI.Contexts;
 using CatalogAPI.Repositories;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,7 +15,14 @@ builder.Services.AddControllers();
 
 builder.Services.AddTransient<ICatalogRepository,CatalogRepository>();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddApiVersioning();
+//builder.Services.AddApiVersioning();
+builder.Services.AddApiVersioning(x =>
+{
+    x.DefaultApiVersion = new ApiVersion(1, 0);
+    x.AssumeDefaultVersionWhenUnspecified = true;
+    x.ReportApiVersions = true;
+    x.ApiVersionReader = new HeaderApiVersionReader("x-api-version");
+});
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
