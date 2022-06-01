@@ -29,7 +29,8 @@ namespace CatalogAPI.Models
             IVaultClient vaultClient = new VaultClient(vaultClientSettings);
             Console.WriteLine(vaultClient.V1.Secrets);
             
-            var result = await vaultClient.V1.Secrets.KeyValue.V1.ReadSecretAsync("mssqlserver", "secret", null);
+            var result = await vaultClient.V1.Secrets.KeyValue.V1.ReadSecretAsync("mssqlserver", 
+                "secret", null);
 
             return result.Data;
 
