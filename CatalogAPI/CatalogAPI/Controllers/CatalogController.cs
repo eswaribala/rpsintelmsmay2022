@@ -14,10 +14,14 @@ namespace CatalogAPI.Controllers
     public class CatalogController : ControllerBase
     {
         private ICatalogRepository _CatalogRepository;
+        private IConfiguration _configuration;
 
-        public CatalogController(ICatalogRepository catalogRepository)
+        public CatalogController(ICatalogRepository
+            catalogRepository, IConfiguration configuration
+            )
         {
-            _CatalogRepository = catalogRepository; 
+            _CatalogRepository = catalogRepository;
+            _configuration = configuration;
         }
 
         // GET: api/<CatalogController>
@@ -27,6 +31,9 @@ namespace CatalogAPI.Controllers
         {
             return await this._CatalogRepository.GetAllCatalog();
         }
+
+       
+
 
         // GET api/<CatalogController>/5
         [HttpGet("{CatalogId}")]

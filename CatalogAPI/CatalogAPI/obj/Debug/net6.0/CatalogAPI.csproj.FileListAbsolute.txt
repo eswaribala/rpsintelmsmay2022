@@ -282,3 +282,13 @@ G:\Local disk\inteldotnetmay2022\CatalogAPI\CatalogAPI\bin\Debug\net6.0\System.R
 G:\Local disk\inteldotnetmay2022\CatalogAPI\CatalogAPI\bin\Debug\net6.0\System.Reactive.Linq.dll
 G:\Local disk\inteldotnetmay2022\CatalogAPI\CatalogAPI\bin\Debug\net6.0\System.Reactive.dll
 G:\Local disk\inteldotnetmay2022\CatalogAPI\CatalogAPI\bin\Debug\net6.0\System.Reactive.xml
+G:\Local disk\inteldotnetmay2022\CatalogAPI\CatalogAPI\bin\Debug\net6.0\Steeltoe.Common.dll
+G:\Local disk\inteldotnetmay2022\CatalogAPI\CatalogAPI\bin\Debug\net6.0\Steeltoe.Common.Abstractions.dll
+G:\Local disk\inteldotnetmay2022\CatalogAPI\CatalogAPI\bin\Debug\net6.0\Steeltoe.Common.Http.dll
+G:\Local disk\inteldotnetmay2022\CatalogAPI\CatalogAPI\bin\Debug\net6.0\Steeltoe.Discovery.Abstractions.dll
+G:\Local disk\inteldotnetmay2022\CatalogAPI\CatalogAPI\bin\Debug\net6.0\Steeltoe.Extensions.Configuration.Abstractions.dll
+G:\Local disk\inteldotnetmay2022\CatalogAPI\CatalogAPI\bin\Debug\net6.0\Steeltoe.Extensions.Configuration.CloudFoundryBase.dll
+G:\Local disk\inteldotnetmay2022\CatalogAPI\CatalogAPI\bin\Debug\net6.0\Steeltoe.Extensions.Configuration.ConfigServerBase.dll
+G:\Local disk\inteldotnetmay2022\CatalogAPI\CatalogAPI\bin\Debug\net6.0\Steeltoe.Extensions.Configuration.ConfigServerCore.dll
+G:\Local disk\inteldotnetmay2022\CatalogAPI\CatalogAPI\bin\Debug\net6.0\Steeltoe.Extensions.Configuration.PlaceholderBase.dll
+G:\Local disk\inteldotnetmay2022\CatalogAPI\CatalogAPI\bin\Debug\net6.0\System.Reflection.MetadataLoadContext.dll

@@ -1,4 +1,4 @@
-﻿/*
+﻿
 using CatalogAPI.Models;
 using CatalogAPI.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -13,56 +13,22 @@ namespace CatalogAPI.Controllers
     public class CatalogV2Controller : ControllerBase
     {
         private ICatalogRepository _CatalogRepository;
-
-        public CatalogV2Controller(ICatalogRepository catalogRepository)
+        private IConfiguration _configuration;
+        public CatalogV2Controller(ICatalogRepository catalogRepository,
+            IConfiguration configuration)
         {
-            _CatalogRepository = catalogRepository; 
+            _CatalogRepository = catalogRepository;
+            _configuration = configuration;
         }
 
-        // GET: api/<CatalogController>
+        // GET api/values
         [HttpGet]
-        public async Task<IEnumerable<Catalog>> Get()
+
+        public ActionResult<IEnumerable<string>> Get()
         {
-            return await this._CatalogRepository.GetAllCatalog();
-        }
-
-        // GET api/<CatalogController>/5
-        [HttpGet("{CatalogId}")]
-        public async Task<Catalog> Get(long CatalogId)
-        {
-            return await this._CatalogRepository.GetCatalogById(CatalogId);
-        }
-
-        // POST api/<CatalogController>
-        [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Catalog Catalog)
-        {
-            await this._CatalogRepository.AddCatalog(Catalog);
-            return CreatedAtAction(nameof(Get),
-                            new { id =Catalog.CatalogId }, Catalog);
-
-        }
-
-        // PUT api/<CatalogController>/5
-        [HttpPut()]
-        public async Task<IActionResult> Put([FromBody] Catalog Catalog)
-        {
-            await this._CatalogRepository.UpdateCatalog(Catalog);
-            return CreatedAtAction(nameof(Get),
-                            new { id = Catalog.CatalogId }, Catalog);
-        }
-
-        // DELETE api/<CatalogController>/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
-        {
-
-            if (await this._CatalogRepository.DeleteCatalog(id))
-                return new OkResult();
-            else
-                return new BadRequestResult();
-
+            var val1 = _configuration["ipaddress"];
+            var val2 = _configuration["port"];
+            return new string[] { val1, val2 };
         }
     }
 }
-*/
