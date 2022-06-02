@@ -292,3 +292,7 @@ G:\Local disk\inteldotnetmay2022\CatalogAPI\CatalogAPI\bin\Debug\net6.0\Steeltoe
 G:\Local disk\inteldotnetmay2022\CatalogAPI\CatalogAPI\bin\Debug\net6.0\Steeltoe.Extensions.Configuration.ConfigServerCore.dll
 G:\Local disk\inteldotnetmay2022\CatalogAPI\CatalogAPI\bin\Debug\net6.0\Steeltoe.Extensions.Configuration.PlaceholderBase.dll
 G:\Local disk\inteldotnetmay2022\CatalogAPI\CatalogAPI\bin\Debug\net6.0\System.Reflection.MetadataLoadContext.dll
+G:\Local disk\inteldotnetmay2022\CatalogAPI\CatalogAPI\bin\Debug\net6.0\Steeltoe.Connector.Abstractions.dll
+G:\Local disk\inteldotnetmay2022\CatalogAPI\CatalogAPI\bin\Debug\net6.0\Steeltoe.Connector.ConnectorBase.dll
+G:\Local disk\inteldotnetmay2022\CatalogAPI\CatalogAPI\bin\Debug\net6.0\Steeltoe.Discovery.ClientBase.dll
+G:\Local disk\inteldotnetmay2022\CatalogAPI\CatalogAPI\bin\Debug\net6.0\Steeltoe.Discovery.Eureka.dll

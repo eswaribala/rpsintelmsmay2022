@@ -9,9 +9,10 @@ using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Steeltoe.Extensions.Configuration.ConfigServer;
-
+using Steeltoe.Discovery.Client;
 var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddConfigServer();
+
 //External Configuration
 ConfigurationManager configuration = builder.Configuration;
 Dictionary<String, Object> data = new VaultConfiguration(configuration).GetDBCredentials().Result;
@@ -36,6 +37,7 @@ builder.Services.AddDbContext<CatalogContext>(o => o.UseSqlServer(providerCs.ToS
 //.UseSqlServer(configuration.GetConnectionString("Catalog_Conn_String")));
 
 builder.Services.AddControllers();
+builder.Services.AddDiscoveryClient(configuration);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
 builder.Services.AddTransient<ICatalogRepository,CatalogRepository>();
@@ -66,6 +68,7 @@ if (app.Environment.IsDevelopment())
 }
 app.UseGraphQL<CatalogSchema>();
 app.UseGraphQLPlayground(options: new PlaygroundOptions());
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
