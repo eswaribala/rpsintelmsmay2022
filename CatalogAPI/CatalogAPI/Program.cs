@@ -8,8 +8,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Steeltoe.Extensions.Configuration.ConfigServer;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Configuration.AddConfigServer();
 //External Configuration
 ConfigurationManager configuration = builder.Configuration;
 Dictionary<String, Object> data = new VaultConfiguration(configuration).GetDBCredentials().Result;
