@@ -1,11 +1,14 @@
-﻿using CatalogAPI.Models;
+﻿using CatalogAPI.Auth;
+using CatalogAPI.Models;
 using CatalogAPI.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace CatalogAPI.Controllers
 {
+    [Authorize(Roles = UserRoles.Admin)]
     [ApiVersion("1.0")]
     [ApiVersion("1.1")]
     [ApiVersion("2.0")]

@@ -10,6 +10,11 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Steeltoe.Extensions.Configuration.ConfigServer;
 using Steeltoe.Discovery.Client;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddConfigServer();
 
@@ -33,8 +38,8 @@ builder.Services.AddDbContext<CatalogContext>(o => o.UseSqlServer(providerCs.ToS
 
 
 // Add services to the container.
-//builder.Services.AddDbContext<CatalogContext>(options => options
-//.UseSqlServer(configuration.GetConnectionString("Catalog_Conn_String")));
+builder.Services.AddDbContext<ApplicationDbContext>(options => options
+.UseSqlServer(configuration.GetConnectionString("Identity_Conn_String")));
 
 builder.Services.AddControllers();
 builder.Services.AddDiscoveryClient(configuration);
@@ -56,6 +61,34 @@ builder.Services.AddGraphQL()
    .AddSystemTextJson()
    .AddGraphTypes(typeof(CatalogSchema), ServiceLifetime.Scoped);
 
+// For Identity
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
+
+// Adding Authentication
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+
+// Adding Jwt Bearer
+.AddJwtBearer(options =>
+{
+    options.SaveToken = true;
+    options.RequireHttpsMetadata = false;
+    options.TokenValidationParameters = new TokenValidationParameters()
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidAudience = configuration["JWT:ValidAudience"],
+        ValidIssuer = configuration["JWT:ValidIssuer"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"]))
+    };
+});
+
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
@@ -71,6 +104,17 @@ app.UseGraphQLPlayground(options: new PlaygroundOptions());
 
 app.UseHttpsRedirection();
 
+app.UseCors(builder =>
+{
+    builder
+    .WithOrigins("http://localhost:4200", "http://localhost:3000", "http://localhost:7072")
+    .WithMethods("PUT", "DELETE", "GET", "POST")
+    .AllowAnyHeader();
+
+
+});
+
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
