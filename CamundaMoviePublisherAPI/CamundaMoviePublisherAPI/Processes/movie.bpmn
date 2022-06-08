@@ -5,33 +5,45 @@
       <bpmn:outgoing>Flow_0pj31l4</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:endEvent id="Event_0wdgibq">
-      <bpmn:incoming>Flow_14bg44f</bpmn:incoming>
+      <bpmn:incoming>Flow_0z5dhp9</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:serviceTask id="Activity_011khun" name="Read Movie Data" camunda:type="external" camunda:topic="movietask">
       <bpmn:incoming>Flow_0pj31l4</bpmn:incoming>
       <bpmn:outgoing>Flow_14bg44f</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="Flow_0pj31l4" sourceRef="StartEvent_1" targetRef="Activity_011khun" />
-    <bpmn:sequenceFlow id="Flow_14bg44f" sourceRef="Activity_011khun" targetRef="Event_0wdgibq" />
+    <bpmn:sequenceFlow id="Flow_14bg44f" sourceRef="Activity_011khun" targetRef="Activity_Kafka" />
+    <bpmn:sequenceFlow id="Flow_0z5dhp9" sourceRef="Activity_Kafka" targetRef="Event_0wdgibq" />
+    <bpmn:serviceTask id="Activity_Kafka" name="Movie Publisher" camunda:type="external" camunda:topic="kafkahandler">
+      <bpmn:incoming>Flow_14bg44f</bpmn:incoming>
+      <bpmn:outgoing>Flow_0z5dhp9</bpmn:outgoing>
+    </bpmn:serviceTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_Movie">
       <bpmndi:BPMNEdge id="Flow_14bg44f_di" bpmnElement="Flow_14bg44f">
         <di:waypoint x="370" y="117" />
-        <di:waypoint x="412" y="117" />
+        <di:waypoint x="430" y="117" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0pj31l4_di" bpmnElement="Flow_0pj31l4">
         <di:waypoint x="215" y="117" />
         <di:waypoint x="270" y="117" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0z5dhp9_di" bpmnElement="Flow_0z5dhp9">
+        <di:waypoint x="530" y="117" />
+        <di:waypoint x="612" y="117" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1" bioc:stroke="#43a047" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#43a047">
         <dc:Bounds x="179" y="99" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0wdgibq_di" bpmnElement="Event_0wdgibq" bioc:stroke="#e53935" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#e53935">
-        <dc:Bounds x="412" y="99" width="36" height="36" />
+        <dc:Bounds x="612" y="99" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1dsvfud_di" bpmnElement="Activity_011khun" bioc:stroke="#fb8c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#fb8c00">
         <dc:Bounds x="270" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1cyjmjz_di" bpmnElement="Activity_Kafka" bioc:stroke="#fb8c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#fb8c00">
+        <dc:Bounds x="430" y="77" width="100" height="80" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

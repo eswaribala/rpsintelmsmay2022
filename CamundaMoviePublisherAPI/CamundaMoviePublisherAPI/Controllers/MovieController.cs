@@ -40,9 +40,10 @@ namespace CamundaMoviePublisherAPI.Controllers
 
 
                 processParams = new StartProcessInstance()
-                    .SetVariable("MovieId",Movie.MovieId)
+                    .SetVariable("MovieId", Movie.MovieId)
                    .SetVariable("DirectorName", Movie.DirectorName)
-                   .SetVariable("Title", Movie.Title);
+                   .SetVariable("Title", Movie.Title)
+                   .SetVariable("ReleaseDate", Movie.ReleasedDate);
 
                 _logger.LogInformation($"Camunda process to demonstrate Saga based orchestrator started..........");
 

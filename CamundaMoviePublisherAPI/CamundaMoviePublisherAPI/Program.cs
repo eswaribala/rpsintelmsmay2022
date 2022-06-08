@@ -26,7 +26,8 @@ builder.Services.AddExternalTaskClient()
         client.BaseAddress = new Uri(configuration["RestApiUri"]);
     });
 builder.Services.AddCamundaWorker("Movie Data Worker", 1)
-    .AddHandler<MovieTaskHandler>();
+    .AddHandler<MovieTaskHandler>()
+    .AddHandler<KafkaTaskHandler>();
  
 var app = builder.Build();
 
