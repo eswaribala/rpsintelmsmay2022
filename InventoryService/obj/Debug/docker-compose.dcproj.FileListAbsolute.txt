@@ -62,3 +62,5 @@ G:\Local disk\inteldotnetmay2022\InventoryDockerComposeDemo\InventoryService\bin
 G:\Local disk\inteldotnetmay2022\InventoryDockerComposeDemo\InventoryService\obj\Debug\docker-compose.dcproj.AssemblyReference.cache
 G:\Local disk\inteldotnetmay2022\InventoryDockerComposeDemo\InventoryService\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
 G:\Local disk\inteldotnetmay2022\InventoryDockerComposeDemo\InventoryService\obj\Debug\docker-compose.dcproj.CopyComplete
+G:\Local disk\inteldotnetmay2022\InventoryDockerComposeDemo\InventoryService\bin\Debug\Prometheus.AspNetCore.dll
+G:\Local disk\inteldotnetmay2022\InventoryDockerComposeDemo\InventoryService\bin\Debug\Prometheus.NetStandard.dll
