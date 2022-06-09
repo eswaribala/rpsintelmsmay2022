@@ -1,0 +1,46 @@
+version: '3.4'
+
+services:
+  inventoryservice:
+    image: ${DOCKER_REGISTRY-}inventoryservice
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - sqlserverinvservice
+  sqlserverinvservice:  
+    image: mcr.microsoft.com/mssql/server 
+    hostname: 'sqlserverinvservice'  
+    environment:  
+      ACCEPT_EULA: 'Y' 
+      SA_PASSWORD: "Vignesh@95"  
+    volumes:  
+      - ./customerapi:/var/opt/mssql/data  
+    ports:  
+      - '1433:1433'  
+    expose:  
+      - 1433
+  prometheus:
+    image: prom/prometheus
+    restart: always
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus.yml:/etc/prometheus43543/prometheus.yml:ro
+    networks:
+      - dotnetcorepromgrafana
+
+  grafana: 
+    image: grafana/grafana
+    #command:
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=P@ssw0rd
+    restart: always
+    ports:
+      - 3000:3000
+    networks:
+      - dotnetcorepromgrafana
+      
+### put all the networks here
+networks:
+  dotnetcorepromgrafana:

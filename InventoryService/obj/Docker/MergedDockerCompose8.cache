@@ -1,0 +1,58 @@
+services:
+  inventoryservice:
+    build:
+      context: G:\Local disk\nov2021\dotnetmicroservices\18112021\InventoryDockerComposeDemo\InventoryService
+      dockerfile: Dockerfile
+    depends_on:
+      sqlservercustomerservice:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: inventoryservice
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      protocol: tcp
+    - mode: ingress
+      target: 443
+      protocol: tcp
+    volumes:
+    - type: bind
+      source: C:\Users\Balasubramaniam\AppData\Roaming/Microsoft/UserSecrets
+      target: /root/.microsoft/usersecrets
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\Balasubramaniam\AppData\Roaming/ASP.NET/Https
+      target: /root/.aspnet/https
+      read_only: true
+      bind:
+        create_host_path: true
+  sqlservercustomerservice:
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: Vignesh@95
+    expose:
+    - "1406"
+    hostname: sqlservercustomerservice
+    image: mcr.microsoft.com/mssql/server
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 1433
+      published: 1406
+      protocol: tcp
+    volumes:
+    - type: bind
+      source: G:\Local disk\nov2021\dotnetmicroservices\18112021\InventoryDockerComposeDemo\InventoryService\customerapi
+      target: /var/opt/mssql/data
+      bind:
+        create_host_path: true
+networks:
+  default:
+    name: dockercompose15520836403232023216_default

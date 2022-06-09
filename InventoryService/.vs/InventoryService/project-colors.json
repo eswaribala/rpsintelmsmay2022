@@ -1,0 +1,31 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "5a7e49c5-2c6e-4eed-bd7e-7c6042e1e509": {
+      "ProjectGuid": "5a7e49c5-2c6e-4eed-bd7e-7c6042e1e509",
+      "DisplayName": "InventoryService",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "6c34f53d-af04-40b6-84aa-05fd898a6e1a": {
+      "ProjectGuid": "6c34f53d-af04-40b6-84aa-05fd898a6e1a",
+      "DisplayName": "ShippingService",
+      "ColorIndex": 1
+    },
+    "a47667af-a72c-4fb8-9b87-2bcfd154471a": {
+      "ProjectGuid": "a47667af-a72c-4fb8-9b87-2bcfd154471a",
+      "DisplayName": "InventoryGateway",
+      "ColorIndex": 2
+    },
+    "a6d30e15-c46d-42ea-97dd-465d0fbba316": {
+      "ProjectGuid": "a6d30e15-c46d-42ea-97dd-465d0fbba316",
+      "DisplayName": "docker-compose",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}

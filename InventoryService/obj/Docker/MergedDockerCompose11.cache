@@ -1,0 +1,32 @@
+services:
+  inventoryservice:
+    build:
+      context: G:\Local disk\inteldotnetmay2022\InventoryDockerComposeDemo\InventoryService
+      dockerfile: Dockerfile
+    depends_on:
+      sqlservercustomerservice:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: inventoryservice
+    ports:
+    - target: 80
+    - target: 443
+    volumes:
+    - C:\Users\Balasubramaniam\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Balasubramaniam\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+  sqlservercustomerservice:
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: Vignesh@95
+    expose:
+    - '1406'
+    hostname: sqlservercustomerservice
+    image: mcr.microsoft.com/mssql/server
+    ports:
+    - published: 1406
+      target: 1433
+    volumes:
+    - G:\Local disk\inteldotnetmay2022\InventoryDockerComposeDemo\InventoryService\customerapi:/var/opt/mssql/data:rw
+version: '3.4'
